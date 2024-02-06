@@ -46,13 +46,23 @@ function createMessage() {
   }
   return messages.join(' ');
 }
-
 //console.log(createMessage());
+
+//Создание уникального ID
+const idArray = [];
+function generateUniqueRandomID() {
+  let newID = getRandomPositiveInteger(1, 1000);
+  while (idArray.includes(newID)) {
+    newID = getRandomPositiveInteger(1, 1000);
+  }
+  idArray.push(newID);
+  return newID;
+}
 
 //Создание объекта комментария
 function createComment() {
   return {
-    id: getRandomPositiveInteger(1, 25),
+    id: generateUniqueRandomID(),
     avatar: `img/avatar-${getRandomPositiveInteger(1, 6)}.svg`,
     message: createMessage(),
     name: getRandomArrayElement(names),
@@ -81,4 +91,4 @@ function createPhotos(count) {
 
 }
 
-// console.log( createPhotos(2) );
+//console.log(createPhotos(25));
