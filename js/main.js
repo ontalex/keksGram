@@ -23,3 +23,14 @@ function createMessage() {
   return messages.join(' ');
 }
 //console.log(createMessage());
+
+//Создание объекта комментария
+function createComment() {
+  return {
+    id: getRandomPositiveInteger(1, 25),
+    avatar: `img/avatar-${getRandomPositiveInteger(1, 6)}.svg`,
+    message: createMessage(),
+    name: getRandomArrayElement(names),
+  };
+}
+console.log(createComment());
