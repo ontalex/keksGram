@@ -13,3 +13,13 @@ const getRandomPositiveInteger = (a, b) => {
 function getRandomArrayElement(array) {
   return array[getRandomPositiveInteger(0, array.length - 1)];
 }
+
+//Случайные комментарии к фотографиям
+function createMessage() {
+  const messages = [];
+  for (let i = 0; i < getRandomPositiveInteger(1, 2); i++) {
+    messages.push(getRandomArrayElement(comments));
+  }
+  return messages.join(' ');
+}
+//console.log(createMessage());
