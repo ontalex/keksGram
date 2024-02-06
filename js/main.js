@@ -1,4 +1,4 @@
-import data from './data.js';
+import { comments, names, descriptions } from './data.js';
 
 // Получение случайного положительного целого числа
 const getRandomPositiveInteger = (a, b) => {
@@ -19,7 +19,7 @@ function getRandomArrayElement(array) {
 function createMessage() {
   const messages = [];
   for (let i = 0; i < getRandomPositiveInteger(1, 2); i++) {
-    messages.push(getRandomArrayElement(data.comments));
+    messages.push(getRandomArrayElement(comments));
   }
   return messages.join(' ');
 }
@@ -32,7 +32,7 @@ function createComment() {
     id: getRandomPositiveInteger(1, 25),
     avatar: `img/avatar-${getRandomPositiveInteger(1, 6)}.svg`,
     message: createMessage(),
-    name: getRandomArrayElement(data.names),
+    name: getRandomArrayElement(names),
   };
 }
 
@@ -43,7 +43,7 @@ function createPhoto(id) {
   return {
     id: id,
     photo: `photos/${id}.jpg`,
-    description: getRandomArrayElement(data.descriptions),
+    description: getRandomArrayElement(descriptions),
     likes: getRandomPositiveInteger(15, 100),
     comments: Array.from({length: getRandomPositiveInteger(1, 25)}, createComment)
   };
