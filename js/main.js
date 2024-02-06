@@ -8,3 +8,8 @@ const getRandomPositiveInteger = (a, b) => {
 
   return Math.floor(res);
 };
+
+//Получение случайного элемента массива
+function getRandomArrayElement(array) {
+  return array[getRandomPositiveInteger(0, array.length - 1)];
+}
