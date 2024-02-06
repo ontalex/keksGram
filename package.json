@@ -2,6 +2,7 @@
   "name": "kekstagram",
   "version": "28.0.0",
   "private": true,
+  "type": "module",
   "description": "Личный проект «Кекстаграм» от HTML Academy",
   "devDependencies": {
     "browser-sync": "^2.29.3",
