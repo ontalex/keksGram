@@ -19,8 +19,8 @@ const description = [
   'Обожаю своего котика',
   'На тусе',
   'Фоточка для инсты',
-
 ]
+
 const getRandomPositiveInteger = (a, b) => {
   const lower = Math.ceil(Math.min(Math.abs(a), Math.abs(b)));
   const upper = Math.floor(Math.min(Math.abs(a), Math.abs(b)));
@@ -29,3 +29,6 @@ const getRandomPositiveInteger = (a, b) => {
 
   return Math.floor(res);
 };
+
+
+const names = ['Максим', 'Алексей', 'Сева', 'Аня', 'Настя', 'Степан'];
