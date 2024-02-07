@@ -48,7 +48,7 @@ function createMessage() {
 }
 //console.log(createMessage());
 
-const getID = () => Number(String(performance.now()).replace('.', '')) + Date.now();
+const getID = () => Date.now() + (Math.random() * 100000).toFixed(0);
 
 //Создание объекта комментария
 function createComment() {
@@ -84,4 +84,4 @@ function createPhotos(count) {
 
 }
 
-// console.log(JSON.stringify(createPhotos(2), 2));
+console.log(createPhotos(2));
