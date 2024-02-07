@@ -48,21 +48,12 @@ function createMessage() {
 }
 //console.log(createMessage());
 
-//Создание уникального ID
-const idArray = [];
-function generateUniqueRandomID() {
-  let newID = getRandomPositiveInteger(1, 1000);
-  while (idArray.includes(newID)) {
-    newID = getRandomPositiveInteger(1, 1000);
-  }
-  idArray.push(newID);
-  return newID;
-}
+const getID = () => Number(String(performance.now()).replace('.', '')) + Date.now();
 
 //Создание объекта комментария
 function createComment() {
   return {
-    id: generateUniqueRandomID(),
+    id: getID(),
     avatar: `img/avatar-${getRandomPositiveInteger(1, 6)}.svg`,
     message: createMessage(),
     name: getRandomArrayElement(names),
@@ -87,8 +78,8 @@ function createPhoto(id) {
 // Создание набора фотографий
 function createPhotos(count) {
 
-  return Array.from({length: count}).map((value, index) => createPhoto(index + 1));
+  return Array.from({length: count}, createPhoto).map((value, index) => createPhoto(index + 1));
 
 }
 
-//console.log(createPhotos(25));
+// console.log(JSON.stringify(createPhotos(2), 2));
