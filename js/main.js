@@ -78,8 +78,8 @@ function createPhoto(id) {
 // Создание набора фотографий
 function createPhotos(count) {
 
-  return Array.from({length: count}, createPhoto).map(
-    (value, index) => createPhoto(index + 1)
+  return Array.from({length: count}).map(
+    (_value, index) => createPhoto(index + 1)
   );
 
 }
