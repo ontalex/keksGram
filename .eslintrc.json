@@ -1,0 +1,20 @@
+{
+    "root": true,
+    "extends": ["htmlacademy/vanilla"],
+    "rules": {
+        "indent": ["error", 4]
+    },
+    "env": {
+        "es2017": true,
+        "browser": true
+    },
+    "parserOptions": {
+        "ecmaVersion": 2018,
+        "sourceType": "module"
+    },
+    "globals": {
+        "_": "readonly",
+        "L": "readonly",
+        "noUiSlider": "readonly"
+    }
+}
