@@ -4,6 +4,7 @@ const makeComment = (template, data) => {
     const commentTemplate = template.cloneNode(true);
 
     commentTemplate.querySelector('.social__picture').src = data.avatar;
+    commentTemplate.querySelector('.social__picture').alt = data.name;
     commentTemplate.querySelector('.social__text').textContent = data.message;
 
     return commentTemplate;
@@ -60,9 +61,11 @@ const showBigPicture = (data) => {
     window.addEventListener('keydown', onEscKeyDown);
     document.querySelector('.big-picture__cancel').addEventListener('click', hideBigPicture);
 
+    bigPicture.querySelector('.social__comment-count').classList.add('hidden');
+    bigPicture.querySelector('.comments-loader').classList.add('hidden');
+
     bigPicture.classList.remove('hidden');
     document.body.classList.add('modal-open');
-
 };
 
 export { showBigPicture };
