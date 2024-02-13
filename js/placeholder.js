@@ -24,7 +24,7 @@ function createComment() {
 function createPhoto(id) {
   return {
     id: id,
-    photo: `photos/${id}.jpg`,
+    url: `photos/${id}.jpg`,
     description: getRandomArrayElement(descriptions),
     likes: getRandomPositiveInteger(15, 200),
     comments: Array.from({length: getRandomPositiveInteger(1, 25)}, createComment)
@@ -32,9 +32,9 @@ function createPhoto(id) {
 }
 
 // Создание набора фотографий
-function createPhotos(count) {
+function createPhotos() {
 
-  return Array.from({length: count}, (_, index) => createPhoto(index + 1));
+  return Array.from({length: 25}, (_, index) => createPhoto(index + 1));
 
 }
 

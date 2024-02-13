@@ -1,3 +1,4 @@
 import { createPhotos } from './placeholder.js';
+import { renderPictures } from './renderPictures.js';
 
-console.log(createPhotos(2));
+renderPictures(createPhotos());
