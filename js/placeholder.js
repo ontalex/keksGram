@@ -1,5 +1,5 @@
 import { names, descriptions, comments } from './data.js';
-import  {getRandomPositiveInteger, getRandomArrayElement, getID} from "./utils.js";
+import {getRandomPositiveInteger, getRandomArrayElement, getID} from './utils.js';
 
 //Случайные комментарии к фотографиям
 function createMessage() {
