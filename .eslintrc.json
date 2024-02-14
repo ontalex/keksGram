@@ -1,10 +1,6 @@
 {
     "root": true,
     "extends": ["htmlacademy/vanilla"],
-    "rules": {
-        "indent": ["error", 4],
-        "no-console": "off"
-    },
     "env": {
         "es2017": true,
         "browser": true

@@ -5,30 +5,30 @@ const container = document.querySelector('.pictures');
 
 //Создание элемента фотографии
 const createPictureElement = (picture) => {
-    const { url, likes, comments } = picture;
-    const pictureElement = pictureTemplate.cloneNode(true);
+  const { url, likes, comments } = picture;
+  const pictureElement = pictureTemplate.cloneNode(true);
 
-    pictureElement.querySelector('.picture__img').src = url;
-    pictureElement.querySelector('.picture__likes').textContent = likes;
-    pictureElement.querySelector('.picture__comments').textContent = comments.length;
+  pictureElement.querySelector('.picture__img').src = url;
+  pictureElement.querySelector('.picture__likes').textContent = likes;
+  pictureElement.querySelector('.picture__comments').textContent = comments.length;
 
-    pictureElement.addEventListener('click', () => {
-        showBigPicture(picture);
-    });
+  pictureElement.addEventListener('click', () => {
+    showBigPicture(picture);
+  });
 
-    return pictureElement;
+  return pictureElement;
 };
 
 //Отображение фотографий
 const renderPictures = (pictures) => {
-    const fragment = document.createDocumentFragment();
+  const fragment = document.createDocumentFragment();
 
-    pictures.forEach((picture) => {
-        const pictureElement = createPictureElement(picture);
-        fragment.append(pictureElement);
-    });
+  pictures.forEach((picture) => {
+    const pictureElement = createPictureElement(picture);
+    fragment.append(pictureElement);
+  });
 
-    container.append(fragment);
+  container.append(fragment);
 };
 
 export { renderPictures };
