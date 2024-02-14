@@ -3,8 +3,9 @@ import { showBigPicture } from './fullscreenPicture.js';
 const pictureTemplate = document.querySelector('#picture').content.querySelector('.picture');
 const container = document.querySelector('.pictures');
 
+
 //Создание элемента фотографии
-const createPictureElement = (picture) => {
+const createPictureElement = (picture, index) => {
   const { url, likes, comments } = picture;
   const pictureElement = pictureTemplate.cloneNode(true);
 
@@ -12,19 +13,24 @@ const createPictureElement = (picture) => {
   pictureElement.querySelector('.picture__likes').textContent = likes;
   pictureElement.querySelector('.picture__comments').textContent = comments.length;
 
-  pictureElement.addEventListener('click', () => {
-    showBigPicture(picture);
-  });
+  pictureElement.dataset.index = index;
 
   return pictureElement;
 };
 
 //Отображение фотографий
 const renderPictures = (pictures) => {
+  container.addEventListener('click', (e) => {
+
+    if(e.target.closest('.picture')) {
+      showBigPicture(pictures[e.target.closest('.picture').dataset.index]);
+    }
+  });
+
   const fragment = document.createDocumentFragment();
 
-  pictures.forEach((picture) => {
-    fragment.append(createPictureElement(picture));
+  pictures.forEach((picture, index) => {
+    fragment.append(createPictureElement(picture,index));
   });
 
   container.append(fragment);
