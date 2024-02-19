@@ -4,6 +4,7 @@ const form = document.querySelector('.img-upload__form');
 const overlay = document.querySelector('.img-upload__overlay');
 const body = document.querySelector('body');
 const hashtagField = document.querySelector('.text__hashtags');
+const descriptionField = document.querySelector('.text__description');
 
 const maxHashtag = 5;
 const minHashtagLength = 2;
@@ -24,7 +25,7 @@ const hideModal = () => {
 };
 
 function onEscKeyDown(evt) {
-  if (evt.key === 'Escape') {
+  if (evt.key === 'Escape' && document.activeElement !== hashtagField && document.activeElement !== descriptionField) {
     evt.preventDefault();
     hideModal();
   }

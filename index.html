@@ -115,9 +115,9 @@
 
                 <!-- Добавление хэш-тегов и комментария к изображению -->
                 <fieldset class="img-upload__text text">
-                  <p class = "img-upload__element">
-                    <input class="text__hashtags" name="hashtags" placeholder="#ХэшТег">
-                  </p>
+                  <label class = "img-upload__element">
+                    <input class="text__hashtags" name="hashtags" placeholder="#ХэшТег" required data-pristine-required-message="это поле обязательно для заполнения">
+                  </label>
                   <label class = "img-upload__element">
                     <textarea class="text__description" name="description" placeholder="Ваш комментарий..." maxlength="140" data-pristine-maxlength-message="длина комментария не может составлять больше 140 символов"></textarea>
                   </label>
