@@ -1,6 +1,9 @@
 const bigPicture = document.querySelector('.big-picture');
 const commentsLoader = document.querySelector('.comments-loader');
 
+const commentsShownTotal = bigPicture.querySelector('.comments-count');
+const commentsShownNow = bigPicture.querySelector('.comments-displayed');
+
 let comments = [];
 
 const COMMENTS_PER_PORTION = 5;
@@ -20,21 +23,18 @@ const renderComments = (data) => {
   const targetRender = bigPicture.querySelector('.social__comments');
   const commentTemplate = bigPicture.querySelector('.social__comment');
 
-  // bigPicture.querySelector(".")
+  commentsShownTotal.textContent = data.length;
 
   commentsShown += COMMENTS_PER_PORTION;
-  
-  console.log("Comments: ", data);
-  console.log("Comments Count: ", data.length);
-
-  console.log("Rendered Coments: ", comments);
-  console.log("Rendered Count: ", commentsShown);
 
   if (commentsShown >= data.length) {
     commentsLoader.classList.add('hidden');
     commentsShown = data.length;
+    commentsShownNow.textContent = data.length;
+
   } else {
     commentsLoader.classList.remove('hidden');
+    commentsShownNow.textContent = commentsShown;
   }
 
   // сброс списка комментариев
@@ -43,7 +43,6 @@ const renderComments = (data) => {
   // рендер списка комментариев
   for (let i = 0; i < commentsShown; i++) {
     const commentElement = makeComment(commentTemplate, data[i]);
-    console.log(commentElement);
     targetRender.append(commentElement);
   }
 };
@@ -90,9 +89,6 @@ const showBigPicture = (data) => {
 
   window.addEventListener('keydown', onEscKeyDown);
   document.querySelector('.big-picture__cancel').addEventListener('click', hideBigPicture);
-
-  // bigPicture.querySelector('.social__comment-count').classList.add('hidden');
-  // bigPicture.querySelector('.comments-loader').classList.add('hidden');
 
   bigPicture.classList.remove('hidden');
   document.body.classList.add('modal-open');
