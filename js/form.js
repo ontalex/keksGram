@@ -10,6 +10,12 @@ const maxHashtag = 5;
 const minHashtagLength = 2;
 const maxHashtagLength = 20;
 const wrongSymbols = /[^a-zA-Z0-9а-яА-ЯёЁ]/g;
+// eslint-disable-next-line no-undef
+const pristine = new Pristine(form, {
+  classTo: 'img-upload__element',
+  errorTextParent: 'img-upload__element',
+  errorTextClass: 'img-upload__error',
+});
 
 const showModal = ()=> {
   overlay.classList.remove('hidden');
@@ -19,6 +25,7 @@ const showModal = ()=> {
 
 const hideModal = () => {
   form.reset();
+  pristine.reset();
   overlay.classList.add('hidden');
   body.classList.remove('modal-open');
   document.addEventListener('keydown', onEscKeyDown);
@@ -30,13 +37,6 @@ function onEscKeyDown(evt) {
     hideModal();
   }
 }
-
-// eslint-disable-next-line no-undef
-const pristine = new Pristine(form, {
-  classTo: 'img-upload__element',
-  errorTextParent: 'img-upload__element',
-  errorTextClass: 'img-upload__error',
-});
 
 const startWithHashtag = (string) =>
   string.startsWith('#');
