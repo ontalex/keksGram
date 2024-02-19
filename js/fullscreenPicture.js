@@ -30,12 +30,10 @@ const renderComments = (data) => {
   if (commentsShown >= data.length) {
     commentsLoader.classList.add('hidden');
     commentsShown = data.length;
-    commentsShownNow.textContent = data.length;
-
   } else {
     commentsLoader.classList.remove('hidden');
-    commentsShownNow.textContent = commentsShown;
   }
+  commentsShownNow.textContent = commentsShown;
 
   // сброс списка комментариев
   targetRender.innerHTML = '';
