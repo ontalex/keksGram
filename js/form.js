@@ -10,6 +10,8 @@ const maxHashtag = 5;
 const minHashtagLength = 2;
 const maxHashtagLength = 20;
 const wrongSymbols = /[^a-zA-Z0-9а-яА-ЯёЁ]/g;
+
+
 // eslint-disable-next-line no-undef
 const pristine = new Pristine(form, {
   classTo: 'img-upload__element',
@@ -31,8 +33,10 @@ const hideModal = () => {
   document.addEventListener('keydown', onEscKeyDown);
 };
 
+const onFocus = () => document.activeElement === hashtagField || document.activeElement === descriptionField;
+
 function onEscKeyDown(evt) {
-  if (evt.key === 'Escape' && document.activeElement !== hashtagField && document.activeElement !== descriptionField) {
+  if (evt.key === 'Escape' && !onFocus()) {
     evt.preventDefault();
     hideModal();
   }
@@ -83,7 +87,6 @@ cancelButton.addEventListener('click', () => {
   hideModal();
 });
 
-form.addEventListener('submit', (evt) => {
-  evt.preventDefault();
+form.addEventListener('submit', () => {
   pristine.validate();
 });
