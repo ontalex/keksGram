@@ -1,3 +1,4 @@
+import { resetEffects } from './effect.js';
 const fileField = document.querySelector('#upload-file');
 const cancelButton = document.querySelector('#upload-cancel');
 const form = document.querySelector('.img-upload__form');
@@ -27,6 +28,7 @@ const showModal = ()=> {
 
 const hideModal = () => {
   form.reset();
+  resetEffects();
   pristine.reset();
   overlay.classList.add('hidden');
   body.classList.remove('modal-open');
