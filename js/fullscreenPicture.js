@@ -46,7 +46,6 @@ const renderComments = (data) => {
 };
 
 const renderPictureDetails = (data) => {
-
   comments = data.comments;
 
   // смена фото
@@ -60,7 +59,6 @@ const renderPictureDetails = (data) => {
 
   // изменить комментарии
   renderComments(comments);
-
 };
 
 const hideBigPicture = () => {
@@ -68,7 +66,9 @@ const hideBigPicture = () => {
   document.body.classList.remove('modal-open');
 
   window.removeEventListener('keydown', hideBigPicture);
-  document.querySelector('.big-picture__cancel').addEventListener('click', hideBigPicture);
+  document
+    .querySelector('.big-picture__cancel')
+    .addEventListener('click', hideBigPicture);
 
   comments = [];
   commentsShown = 0;
@@ -82,11 +82,12 @@ function onEscKeyDown(evt) {
 }
 
 const showBigPicture = (data) => {
-
   renderPictureDetails(data);
 
   window.addEventListener('keydown', onEscKeyDown);
-  document.querySelector('.big-picture__cancel').addEventListener('click', hideBigPicture);
+  document
+    .querySelector('.big-picture__cancel')
+    .addEventListener('click', hideBigPicture);
 
   bigPicture.classList.remove('hidden');
   document.body.classList.add('modal-open');

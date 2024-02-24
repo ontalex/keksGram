@@ -1,3 +1,5 @@
+import { resetScale } from './scaleControll.js';
+
 const fileField = document.querySelector('#upload-file');
 const cancelButton = document.querySelector('#upload-cancel');
 const form = document.querySelector('.img-upload__form');
@@ -11,7 +13,6 @@ const minHashtagLength = 2;
 const maxHashtagLength = 20;
 const wrongSymbols = /[^a-zA-Z0-9а-яА-ЯёЁ]/g;
 
-
 // eslint-disable-next-line no-undef
 const pristine = new Pristine(form, {
   classTo: 'img-upload__element',
@@ -19,13 +20,15 @@ const pristine = new Pristine(form, {
   errorTextClass: 'img-upload__error',
 });
 
-const showModal = ()=> {
+const showModal = () => {
+  resetScale();
   overlay.classList.remove('hidden');
   body.classList.add('modal-open');
   document.addEventListener('keydown', onEscKeyDown);
 };
 
 const hideModal = () => {
+  resetScale();
   form.reset();
   pristine.reset();
   overlay.classList.add('hidden');
@@ -33,7 +36,9 @@ const hideModal = () => {
   document.addEventListener('keydown', onEscKeyDown);
 };
 
-const onFocus = () => document.activeElement === hashtagField || document.activeElement === descriptionField;
+const onFocus = () =>
+  document.activeElement === hashtagField ||
+  document.activeElement === descriptionField;
 
 function onEscKeyDown(evt) {
   if (evt.key === 'Escape' && !onFocus()) {
@@ -42,24 +47,20 @@ function onEscKeyDown(evt) {
   }
 }
 
-const startWithHashtag = (string) =>
-  string.startsWith('#');
+const startWithHashtag = (string) => string.startsWith('#');
 
 const validLength = (string) =>
   string.length >= minHashtagLength && string.length <= maxHashtagLength;
 
-const validSymbols = (string) =>
-  !wrongSymbols.test(string.slice(1));
+const validSymbols = (string) => !wrongSymbols.test(string.slice(1));
 
 const validTag = (tag) =>
-  startWithHashtag(tag) &&
-validLength(tag) &&
-validSymbols(tag);
+  startWithHashtag(tag) && validLength(tag) && validSymbols(tag);
 
 const validCount = (tags) => tags.length <= maxHashtag;
 
 const uniqueTags = (tags) => {
-  const lowerCaseTags = tags.map((tag)=> tag.toLowerCase());
+  const lowerCaseTags = tags.map((tag) => tag.toLowerCase());
   return lowerCaseTags.length === new Set(lowerCaseTags).size;
 };
 
@@ -68,15 +69,13 @@ const validateTags = (value) => {
     .trim()
     .split(' ')
     .filter((tag) => tag.trim().length);
-  return validCount(tags) &&
-  uniqueTags(tags) &&
-  tags.every(validTag);
+  return validCount(tags) && uniqueTags(tags) && tags.every(validTag);
 };
 
 pristine.addValidator(
   hashtagField,
   validateTags,
-  'Неправильно заполнены хэштеги'
+  'Неправильно заполнены хэштеги',
 );
 
 fileField.addEventListener('change', () => {
