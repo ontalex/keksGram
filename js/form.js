@@ -1,4 +1,5 @@
 import { resetScale } from './scaleControll.js';
+import { resetEffects } from './effect.js';
 
 const fileField = document.querySelector('#upload-file');
 const cancelButton = document.querySelector('#upload-cancel');
@@ -30,6 +31,7 @@ const showModal = () => {
 const hideModal = () => {
   resetScale();
   form.reset();
+  resetEffects();
   pristine.reset();
   overlay.classList.add('hidden');
   body.classList.remove('modal-open');

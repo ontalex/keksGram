@@ -527,7 +527,7 @@ main {
  * Шкала регулирования глубины фильтра
  */
 
-.effect-level {
+.effect-level{
   position: absolute;
   bottom: 10px;
   left: 50%;
@@ -549,9 +549,29 @@ main {
           transform: translateX(-50%);
 }
 
+.effect-level .noUi-base{
+  
+  background: rgba(0, 0, 0, 0.6);
+
+}
+.effect-level .noUi-target{
+  border-radius: 16px;
+}
+
+.effect-level .noUi-connects{
+  border-radius: 16px;
+}
+
+.effect-level .noUi-connect{
+  background: #ffa600;
+
+}
+
 .effect-level__value {
   display: none;
 }
+
+
 
 
 /**
