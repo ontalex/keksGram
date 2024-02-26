@@ -4,11 +4,6 @@ const scaleInput = document.querySelector('.scale__control--value');
 const smallerButton = document.querySelector('.scale__control--smaller');
 const biggerButton = document.querySelector('.scale__control--bigger');
 
-console.log(image);
-console.log(scaleInput);
-console.log(smallerButton);
-console.log(biggerButton);
-
 const DEFAULT_SCALE = 100;
 const SCALE_STEP = 25;
 const MIN_SCALE = 25;

@@ -541,8 +541,7 @@ main {
   color: #ffffff;
   white-space: nowrap;
 
-  background-color: rgba(0, 0, 0, 0.6);
-  border-radius: 33px;
+  border: 0px;
 
   -webkit-transform: translateX(-50%);
       -ms-transform: translateX(-50%);
