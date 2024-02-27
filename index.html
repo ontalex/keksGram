@@ -210,6 +210,15 @@
     </a>
   </template>
 
+  <!-- Сообщение с ошибкой получения изображений с сервера -->
+  <template id="errorOnLoad">
+    <section class="error">
+      <div class="error__inner">
+        <h2 class="error__title">Ошибка получения изображений с сервера</h2>
+      </div>
+    </section>
+  </template>
+
   <!-- Сообщение с ошибкой загрузки изображения -->
   <template id="error">
     <section class="error">
@@ -234,7 +243,7 @@
   <template id="messages">
     <div class="img-upload__message  img-upload__message--loading">Загружаем...</div>
   </template>
- 
+
   <script src="pristine/pristine.min.js"></script>
   <script src="nouislider/nouislider.js"></script>
   <script src="js/main.js" type="module"></script>

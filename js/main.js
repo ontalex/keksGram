@@ -1,10 +1,23 @@
-import { createPhotos } from './placeholder.js';
+import { getData, sendData } from './api.js';
 import { renderPictures } from './renderPictures.js';
 import { hideModal, setOnFormSubmit } from './form.js';
-import { sendData } from './api.js';
 
-let success = document.getElementById('success');
-let error = document.getElementById('error');
+const success = document.getElementById('success');
+const error = document.getElementById('error');
+
+const onLoadSuccess = (data) => {
+  renderPictures(data);
+};
+
+const onLoadError = () => {
+  // показать сообщение с ошибкой
+  const template = document.getElementById('errorOnLoad');
+  const clone = template.content.cloneNode(true);
+  document.body.appendChild(clone);
+};
+
+getData(onLoadSuccess, onLoadError);
+
 
 const onSendDataSuccess = () => {
   //закрыть окно формы, показать сообщение c успешной отправкой
@@ -36,4 +49,3 @@ setOnFormSubmit(async (data) => {
   await sendData(onSendDataSuccess, onSendDataError, data);
 });
 
-renderPictures(createPhotos());
