@@ -1,8 +1,7 @@
-import { hideModal, setOnFormSubmit } from './form.js';
-import { sendData } from './api.js';
+import { hideModal } from './form.js';
 
-let success = document.getElementById('success');
-let error = document.getElementById('error');
+const success = document.getElementById('success');
+const error = document.getElementById('error');
 
 const onSendDataSuccess = () => {
   //закрыть окно формы, показать сообщение c успешной отправкой
@@ -30,6 +29,4 @@ const onSendDataError = () => {
   hideModal();
 };
 
-setOnFormSubmit(async (data) => {
-  await sendData(onSendDataSuccess, onSendDataError, data);
-});
+export { onSendDataSuccess, onSendDataError };
