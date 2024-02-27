@@ -1,5 +1,3 @@
-import { createPhotos } from './placeholder.js';
-import { renderPictures } from './renderPictures.js';
 import { hideModal, setOnFormSubmit } from './form.js';
 import { sendData } from './api.js';
 
@@ -35,5 +33,3 @@ const onSendDataError = () => {
 setOnFormSubmit(async (data) => {
   await sendData(onSendDataSuccess, onSendDataError, data);
 });
-
-renderPictures(createPhotos());

@@ -8,6 +8,7 @@ const overlay = document.querySelector('.img-upload__overlay');
 const body = document.querySelector('body');
 const hashtagField = document.querySelector('.text__hashtags');
 const descriptionField = document.querySelector('.text__description');
+const submitButton = document.querySelector('.img-upload__submit');
 
 const maxHashtag = 5;
 const minHashtagLength = 2;
@@ -88,6 +89,27 @@ cancelButton.addEventListener('click', () => {
   hideModal();
 });
 
-form.addEventListener('submit', () => {
-  pristine.validate();
-});
+const blockSubmitButton = () => {
+  submitButton.disabled = true;
+  submitButton.textContent = 'Отправляю...';
+};
+
+const unblockSubmitButton = () => {
+  submitButton.disabled = false;
+  submitButton.textContent = 'Опубликовать';
+};
+
+const setOnFormSubmit = (cb) => {
+  form.addEventListener('submit', async (evt) => {
+    evt.preventDefault();
+    const isValid = pristine.validate();
+
+    if (isValid) {
+      blockSubmitButton();
+      await cb(new FormData(form));
+      unblockSubmitButton();
+    }
+  });
+};
+
+export { setOnFormSubmit, hideModal };
