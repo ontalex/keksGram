@@ -36,7 +36,7 @@ const hideModal = () => {
   pristine.reset();
   overlay.classList.add('hidden');
   body.classList.remove('modal-open');
-  document.addEventListener('keydown', onEscKeyDown);
+  document.removeEventListener('keydown', onEscKeyDown);
 };
 
 const onFocus = () =>
